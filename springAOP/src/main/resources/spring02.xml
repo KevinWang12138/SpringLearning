@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--开启自动扫描，并设置扫描范围-->
+    <context:component-scan base-package="hello"></context:component-scan>
+
+    <!--开启AOP代理-->
+    <aop:config>
+        <aop:aspect ref="logCut02">
+            <!--定义切入点 id是对应切面类的切入点的方法-->
+            <aop:pointcut id="cut" expression="execution(* hello.service..*.*(..))"/>
+            <!--方法执行前-->
+            <aop:before method="before" pointcut-ref="cut"/>
+            <!--返回通知-->
+            <aop:before method="afterReturn" pointcut-ref="cut"/>
+            <!--异常通知-->
+            <aop:after-throwing method="throwReturn" throwing="e" pointcut-ref="cut"/>
+            <!--最终通知-->
+            <aop:after method="after" pointcut-ref="cut"/>
+            <!--环绕通知-->
+            <aop:around method="around" pointcut-ref="cut"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
