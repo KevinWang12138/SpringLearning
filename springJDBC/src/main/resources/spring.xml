@@ -57,13 +57,4 @@
             <aop:advisor advice-ref="txAdvice" pointcut-ref="cut"/>
         </aop:config>
     </beans>
-
-
-
-
-
-
-
-
-
 </beans>
