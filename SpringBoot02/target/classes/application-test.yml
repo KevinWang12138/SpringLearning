@@ -1,0 +1,5 @@
+server:
+  port: 8989
+  servlet:
+    #项目访问路径
+    context-path: /spring
