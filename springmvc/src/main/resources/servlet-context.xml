@@ -22,4 +22,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
 </beans>
