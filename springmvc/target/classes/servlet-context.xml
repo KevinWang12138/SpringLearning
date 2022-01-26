@@ -28,5 +28,19 @@
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-
+    <!--拦截器配置-->
+    <mvc:interceptors>
+    <!--拦截所有请求-->
+<!--        <bean id="myInterceptor" class="hello.interceptors.MyInterceptor01"></bean>-->
+        <!--指定拦截-->
+        <mvc:interceptor>
+            <!--设置需要拦截的路径 /**表示拦截所有的资源-->
+            <mvc:mapping path="/**"/>
+            <!--设置不需要拦截的路径 支持通配符，可定义多个-->
+            <mvc:exclude-mapping path="/url/*"/>
+            <mvc:exclude-mapping path="/hello.do"/>
+            <!--设置拦截器-->
+            <bean id="interceptor" class="hello.interceptors.MyInterceptor01"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

@@ -23,6 +23,7 @@ import java.util.Map;
 public class DataController {
     @RequestMapping("data01")
     public ModelAndView data01(){
+        System.out.println("目标方法...");
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.addObject("uname","admin");
         modelAndView.setViewName("data");
